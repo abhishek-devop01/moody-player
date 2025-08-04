@@ -46,7 +46,7 @@ export default function FacialExpression() {
     }, []);
 
     return (
-        <div className='mood-element flex items-center justify-center gap-20 pt-10'>
+        <div className='mood-element flex items-center justify-center gap-20 pt-10 '>
             <video
                 ref={videoRef}
                 autoPlay

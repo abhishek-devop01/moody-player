@@ -29,17 +29,16 @@ const MoodSongs = () => {
 
             {Songs.map((song, index) => (
                 <div className='song flex justify-around w-full' key={index}>
-                    <div className="title">
+                    <div className="title text-xl">
                         <h3>{song.title}</h3>
-                        <p>{song.artist}</p>
+                        <p className='font-thin text-sm'>{song.artist}</p>
                     </div>
-                    <div className="play-pause-button">
-                        <i className="ri-pause-line"></i>
+                    <div className="play-pause-button text-2xl">
+                        <i className="ri-pause-circle-fill"></i>
                         <i className="ri-play-circle-fill"></i>
                     </div>
                 </div>
             ))}
-
         </div>
     )
 }
