@@ -1,5 +1,5 @@
 var ImageKit = require("imagekit");
-
+var mongoose = require('mongoose')
 var imagekit = new ImageKit({
   publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
   privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
@@ -11,7 +11,8 @@ function uploadFile(file) {
     imagekit.upload(
       {
         file: file.buffer,
-        fileName: file.originalname,
+        fileName: new mongoose.Types.ObjectId().toString(),
+        folder: "MoodyPlayer-audio",
       },
       (error, result) => {
         if (error) {
