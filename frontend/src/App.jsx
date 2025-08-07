@@ -4,21 +4,7 @@ import { useState } from "react"
 
 function App() {
    const [ Songs, setSongs ] = useState([
-          {
-              title: "test_title",
-              artist: "test_artist",
-              url: "test_url",
-          },
-          {
-              title: "test_title",
-              artist: "test_artist",
-              url: "test_url",
-          },
-          {
-              title: "test_title",
-              artist: "test_artist",
-              url: "test_url",
-          },
+          
       ])
 
   return (
