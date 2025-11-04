@@ -53,12 +53,12 @@ export default function FacialExpression({ setSongs }) {
 
     setMood({ label: _expression, exp: EXPRESSION[_expression] || "" });
 
-    // axios.get(`http://localhost:3000/songs?mood=${_expression}`)
-    // .then(response=>{
-    //     console.log(response.data);
-    //     setSongs(response.data.songs)
+    axios.get(`http://localhost:3000/songs?mood=${_expression}`)
+    .then(response=>{
+        console.log(response.data);
+        setSongs(response.data.songs)
 
-    // })
+    })
   }
 
   useEffect(() => {
@@ -66,28 +66,29 @@ export default function FacialExpression({ setSongs }) {
   }, []);
 
   return (
-    <div className="mood-element flex items-center justify-center gap-20 pt-10 ">
+    <div className="mood-element flex flex-col items-center justify-center gap-10 pt-5 ">
       <video
         ref={videoRef}
         autoPlay
         muted
         className="user-video-feed border-2 rounded-xl overflow-hidden text-zinc-400 bg-zinc-900 h-[28vh] w-[18vw]"
       />
-      <div className="mood-display text-zinc-200 flex flex-col items-center gap-2">
-        <div className="text-sm text-zinc-400">Detected mood</div>
-        <div className="flex items-center gap-3">
-          <div className="exp text-4xl">{mood ? mood.exp : "—"}</div>
-          <div className="label text-xl font-semibold">
-            {mood ? mood.label : "No mood"}
-          </div>
-        </div>
-      </div>
+      
       <button
-        className=" text-zinc-400 bg-zinc-900 px-4 py-2 rounded-xl"
+        className=" text-zinc-100 bg-zinc-900 px-4 py-2 rounded-xl hover:bg-black active:bg-zinc-900 transition"
         onClick={detectMood}
       >
         Detect Mood
       </button>
+      <div className="mood-display text-zinc-200 flex flex-col items-center gap-2">
+        <div className="text-7xl pt-10 text-zinc-400 capitalize">-----Detected mood-----</div>
+        <div className="flex items-center gap-3">
+          <div className="exp text-4xl">{mood ? mood.exp : ""}</div>
+          <div className="label text-5xl capitalize pt-10 font-semibold">
+            {mood ? mood.label : "No mood"}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
